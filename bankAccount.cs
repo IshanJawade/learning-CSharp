@@ -5,33 +5,56 @@ namespace MyBank{
     class BankAccount{
         public string Number { get; }
         public string Owner { get;  set; }
-        public decimal Balance { get; }
+        public decimal Balance { 
+            get{
+                decimal balance = 0;
+                foreach(var item in allTransactions){
+                    balance += item.Amount;
+                }
+                return balance;
+            }
+        }
         private static double accountNumberSeed = 2021989007000;
-        private List<Transactions> allTransactions = new List<Transactions>(); 
+        public List<Transaction> allTransactions = new List<Transaction>(); //Make this private after use 
 
         public BankAccount(string name, decimal initialBalance){
             this.Owner = name;
-            this.Balance = initialBalance;
-            
+
+            MakeDeposite(initialBalance, DateTime.Now, "Initial Balance");
+
             this.Number = accountNumberSeed.ToString();
             accountNumberSeed++;
         }
 
         public void MakeDeposite(decimal amount, DateTime date, string note ){
-
+            if (amount <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(amount), "Amount of deposit must be positive");
+            }
+            var deposit = new Transaction(amount, date, note);
+            allTransactions.Add(deposit);
         }
 
         public void MakeWithdrawal(decimal amount,  DateTime date, string note){
-
+            if (amount <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(amount), "Amount of withdrawal must be positive");
+            }
+            if (Balance - amount < 0)
+            {
+                throw new InvalidOperationException("Not sufficient funds for this withdrawal");
+            }
+            var withdrawal = new Transaction(-amount, date, note);
+            allTransactions.Add(withdrawal);
         }
     }
 
-    class Transactions{
+    class Transaction{
         public decimal Amount { get; }
         public DateTime Date { get; }
         public string Notes { get; }
 
-        public Transactions(decimal amount, DateTime date, string note){
+        public Transaction(decimal amount, DateTime date, string note){
             this.Amount = amount;
             this.Date = date;
             this.Notes = note;
@@ -41,8 +64,24 @@ namespace MyBank{
     class MainClass{
         static void Main(String[] args){
             var account = new BankAccount("Ishan", 30000);
-            //var account2 = new BankAccount("Advait", 70000);
-            Console.WriteLine($"Account {account.Number} was created for {account.Owner} with {account.Balance}.");
+            Console.WriteLine($"Account {account.Number} was created for {account.Owner} with {account.Balance} initial balance.");
+            Console.WriteLine($"Account Balance is: {account.Balance}");
+
+            account.MakeWithdrawal(15000, DateTime.Now, "Medical Emergency");
+            account.MakeWithdrawal(1000, DateTime.Now, "Internet Recharge");
+            account.MakeWithdrawal(500, DateTime.Now, "Starbucks Coffee");
+            Console.WriteLine("");
+
+            Console.WriteLine("All Transaction Record: ");
+            foreach(var i in account.allTransactions){
+                Console.Write($"{i.Amount}  ");
+                Console.Write($"{i.Date}  ");
+                Console.Write($"{i.Notes}");
+                Console.WriteLine("");
+            }
+            Console.WriteLine("");
+            Console.WriteLine($"Account Balance is: {account.Balance}");
+
         }
     }
 }
