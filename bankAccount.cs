@@ -89,6 +89,7 @@ namespace MyBank{
             
             //Get Account History
             Console.WriteLine(account.GetAccountHostory());
+            Console.WriteLine($"Account Balance is: {account.Balance}");
 
         }
     }
