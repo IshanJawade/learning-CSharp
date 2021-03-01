@@ -15,7 +15,7 @@ namespace MyBank{
             }
         }
         private static double accountNumberSeed = 2021989007000;
-        public List<Transaction> allTransactions = new List<Transaction>(); //Make this private after use 
+        private List<Transaction> allTransactions = new List<Transaction>(); //Make this private after use 
 
         public BankAccount(string name, decimal initialBalance){
             this.Owner = name;
@@ -47,6 +47,10 @@ namespace MyBank{
             var withdrawal = new Transaction(-amount, date, note);
             allTransactions.Add(withdrawal);
         }
+
+        public string GetAccountHostory(){
+            
+        }
     }
 
     class Transaction{
@@ -72,6 +76,7 @@ namespace MyBank{
             account.MakeWithdrawal(500, DateTime.Now, "Starbucks Coffee");
             Console.WriteLine("");
 
+            /*
             Console.WriteLine("All Transaction Record: ");
             foreach(var i in account.allTransactions){
                 Console.Write($"{i.Amount}  ");
@@ -81,6 +86,19 @@ namespace MyBank{
             }
             Console.WriteLine("");
             Console.WriteLine($"Account Balance is: {account.Balance}");
+            */
+
+            // Test that the initial balances must be positive.
+            // Test for a negative balance.
+            try
+            {
+                account.MakeWithdrawal(-750, DateTime.Now, "Attempt to overdraw");
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.WriteLine("Exception caught trying to overdraw");
+                Console.WriteLine(e.ToString());
+            }
 
         }
     }
