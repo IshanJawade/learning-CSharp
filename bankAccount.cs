@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace MyBank{
     class BankAccount{
@@ -49,8 +50,16 @@ namespace MyBank{
         }
 
         public string GetAccountHostory(){
-            
-        }
+            var report = new StringBuilder();
+
+            //Column Name
+            report.AppendLine($"Date\t\t\tAmount\tNotes");
+            //Rows
+            foreach(var item in allTransactions){
+                report.AppendLine($"{item.Date}\t{item.Amount}\t{item.Notes}");
+            }
+            return report.ToString();
+        }   
     }
 
     class Transaction{
@@ -70,35 +79,16 @@ namespace MyBank{
             var account = new BankAccount("Ishan", 30000);
             Console.WriteLine($"Account {account.Number} was created for {account.Owner} with {account.Balance} initial balance.");
             Console.WriteLine($"Account Balance is: {account.Balance}");
+            Console.WriteLine("");
 
+            // Some Transactions
             account.MakeWithdrawal(15000, DateTime.Now, "Medical Emergency");
             account.MakeWithdrawal(1000, DateTime.Now, "Internet Recharge");
             account.MakeWithdrawal(500, DateTime.Now, "Starbucks Coffee");
-            Console.WriteLine("");
-
-            /*
-            Console.WriteLine("All Transaction Record: ");
-            foreach(var i in account.allTransactions){
-                Console.Write($"{i.Amount}  ");
-                Console.Write($"{i.Date}  ");
-                Console.Write($"{i.Notes}");
-                Console.WriteLine("");
-            }
-            Console.WriteLine("");
-            Console.WriteLine($"Account Balance is: {account.Balance}");
-            */
-
-            // Test that the initial balances must be positive.
-            // Test for a negative balance.
-            try
-            {
-                account.MakeWithdrawal(-750, DateTime.Now, "Attempt to overdraw");
-            }
-            catch (InvalidOperationException e)
-            {
-                Console.WriteLine("Exception caught trying to overdraw");
-                Console.WriteLine(e.ToString());
-            }
+            account.MakeDeposite(50000, DateTime.Now, "Salary Deposited");
+            
+            //Get Account History
+            Console.WriteLine(account.GetAccountHostory());
 
         }
     }
