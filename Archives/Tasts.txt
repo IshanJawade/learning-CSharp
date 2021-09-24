@@ -1,0 +1,15 @@
+1. Create MVC 5 basic application using Entity Framework.
+e.g., Customer Form (Only CRUD)
+Note: Form must have dropdown, checkboxes, radio button, and text-boxes.
+Deadline:(1 March to 5 March)
+
+2. Create Asp.NET Core basic application using Entity Framework Core.
+e.g., Customer Form (Only CRUD)
+Note: Form must have dropdown, checkboxes, radio button, and text-boxes.
+Deadline:(6 March to 11 march)
+
+3. Study Abp framework. 
+Deadline: (12 March to 14 March)
+
+4. Create basic application in abp framework (Only CRUD). 
+Deadline:(15 March to 17 March)

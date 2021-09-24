@@ -1,0 +1,2 @@
+Dependencies Downloaded for .NET :
+brotli, libmetalink, libssh2, c-ares, jemalloc, libev, nghttp2, openldap, rtmpdump, zstd and curl
