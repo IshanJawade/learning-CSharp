@@ -14,6 +14,5 @@ class SwitchCase{
             case 'D': Console.WriteLine("Needs Improvement");
                 break;
         }
-
     }
 }
