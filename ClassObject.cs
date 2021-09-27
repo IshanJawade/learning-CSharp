@@ -1,6 +1,5 @@
 using System;
 
-
 class car {
     public string PrintStuff(){
         string str = "Its PrintStuff fucntion from car class";
