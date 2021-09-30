@@ -1,7 +1,7 @@
 using System;
 
 public interface IMyInterface {
-    int add(int a, int b);      // no access modifire is required in interfaces
+    int add(int a, int b);      // no access modifires is required in interfaces
     int sub(int a, int b);
 }
 
