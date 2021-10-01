@@ -1,5 +1,6 @@
 using System;
 public delegate int DelMethod(int a, int b);    // Declaration of  Delegate
+
 class TestDelegate {
     public int Add(int a, int b){
     return a+b;
