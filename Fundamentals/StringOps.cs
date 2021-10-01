@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 
 class StringOps {
     public static void Main(String[] args) {
@@ -53,6 +54,16 @@ class StringOps {
 
         //Removes only starting and Ending blank spaces from the string
         System.Console.WriteLine(fullName.Trim());
+
+
+        //++++++++++++++++++ String Builder Ops ++++++++++++++++++++++
+        StringBuilder strBuild = new StringBuilder("Hi!!");
+        System.Console.WriteLine(strBuild);
+        
+        strBuild.Append("kichiki");
+        strBuild.AppendLine("kdk suit and all are there!");
+        System.Console.WriteLine(strBuild);
+
     }
         
 }  
