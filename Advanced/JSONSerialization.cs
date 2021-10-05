@@ -19,7 +19,7 @@ namespace JSON {
                 skills = new string[] {"C#", "Java", "Python", "C++"}
             };
 
-            Seria
+            // Rest of the code will be here...
         }
     }
 }
