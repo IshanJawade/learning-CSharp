@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8">
+<!DOCTYPE notes SYSTEM "students.xml">
+
+<students>
+    
+    <student id="1121">
+    <name>Tom</name>
+    <age>21</age>
+    </student>
+
+    <student id="1122">
+    <name>Peter</name>
+    <age>27</age>
+    </student>
+
+    <student id="1123">
+    <name>Chriss</name>
+    <age>40</age>
+    </student>
+
+    <student id="1124">
+    <name>Robert</name>
+    <age>33</age>
+    </student>
+
+</students>

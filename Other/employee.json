@@ -1,0 +1,7 @@
+{
+    var employee = [
+    {"name": "Tom", "Skill": "Stunts"}, 
+    {"name": "Peter", "Skill": "Swings"}, 
+    {"name": "Robert", "Skill": "Mechanics"}
+];
+}
